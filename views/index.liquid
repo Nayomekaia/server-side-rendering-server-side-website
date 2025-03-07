@@ -87,21 +87,16 @@
       </select>
 
       {% for stekje in stekjes %}
+        <section>
+        
         <a href="/stekjes/{{stekje.id}}">
             <h3>{{stekje.naam}}</h3></a>
+        <img src="https://fdnd-agency.directus.app/assets/{{ stekje.foto }}" alt="{{stekje.naam}}"> 
     {% endfor %}
 
     <section class="carousel-stekjes">
         <ul class="slides">
-            <li><img src="./assets/photo1.png" alt="scindapsus">scindapsus</li>
-            <li><img src="./assets/photo2.png" alt= "Tradescantia zebrina"> Tradescantia zebrina ‘Vaderplant’</li>
-            <li><img src="./assets/photo3.png" alt="Epipremnum Pinnatum Aureum"> Epipremnum Pinnatum Aureum</li>
-            <li><img src="./assets/photo4.png" alt="Aloë Vera"> Aloë Vera</li>
-            <li><img src="./assets/photo5.png" alt="Aglaonema ´Spotted Star"></li>
-            <li><img src="./assets/photo6.png" alt="Gynura ‘Fluweelplant"></li>
-            <li><img src="./assets/photo7.png" alt="Asparagus Plumosus ‘Sierasperge"></li>
-            <li><img src="./assets/photo8.png" alt="Chlorophytum comosum ">Chlorophytum comosum ‘Graslelie’</li>
-        </ul>
+           
     </section>
 
     <section class="uitleg-stekjes">
