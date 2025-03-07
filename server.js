@@ -42,6 +42,12 @@ app.get('/', async function (request, response) {
     stekjes: apiResponseJSON.data,
    })
 })
+
+
+app.get('/detail', async function (request, response) {
+  response.render('detail.liquid', {
+    stekjes: apiResponseJSON.data,
+   })
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
