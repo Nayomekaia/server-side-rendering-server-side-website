@@ -44,11 +44,13 @@ app.get('/', async function (request, response) {
 })
 
 
-app.get('/detail', async function (request, response) {
-  response.render('detail.liquid', {
-    stekjes: apiResponseJSON.data,
-   })
-})
+app.get('/stekjes/:id', async function (request, response) {
+  const stekjeId = request.params.id;
+  const stekjeResponse = await fetch(`https://fdnd-agency.directus.app/items/bib_stekjes/${stekjeId}`);
+  const stekjeData = await stekjeResponse.json();
+
+  response.render('stekjes.liquid', { stekje: stekjeData.data });
+});
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt

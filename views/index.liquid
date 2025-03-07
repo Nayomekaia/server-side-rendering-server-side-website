@@ -2,7 +2,7 @@
 
 <header> 
     <section class="menu">
-        <img src="{{ 'logo.png' | asset_url }}" alt="logo">
+        <img src="" alt="logo">
 
         <nav>
             <ul>
@@ -85,6 +85,11 @@
         <option value="">IRRITERENT VOOR HUISDIEREN</option>
         <option value="">NIET GIFTIG</option>
       </select>
+
+      {% for stekje in stekjes %}
+        <a href="/stekjes/{{stekje.id}}">
+            <h3>{{stekje.naam}}</h3></a>
+    {% endfor %}
 
     <section class="carousel-stekjes">
         <ul class="slides">
