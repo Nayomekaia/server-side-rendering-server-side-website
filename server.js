@@ -8,10 +8,11 @@ import { Liquid } from 'liquidjs';
 
 console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
 // Doe een fetch naar de data die je nodig hebt
- const apiResponse = await fetch('https://fdnd-agency.directus.app/items/bib_stekjes')
+const stekjesResponse = await fetch('https://fdnd-agency.directus.app/items/bib_stekjes')
+const stekjesResponseJSON = await stekjesResponse.json()
 
-// Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
-const apiResponseJSON = await apiResponse.json()
+const afbeeldingenResponse = await fetch('https://fdnd-agency.directus.app/items/bib_afbeeldingen?filter={%20%22type%22:%20{%20%22_eq%22:%20%22stekjes%22%20}}')
+const afbeeldingenResponseJSON = await afbeeldingenResponse.json()
 
 // Controleer eventueel de data in je console
 // (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
@@ -39,15 +40,16 @@ app.get('/', async function (request, response) {
    
    // Geef hier eventueel data aan mee
    response.render('index.liquid', {
-    stekjes: apiResponseJSON.data,
+    stekjes: stekjesResponseJSON.data,
+    afbeeldingen: afbeeldingenResponseJSON.data
    })
 })
-
 
 app.get('/stekjes/:id', async function (request, response) {
   const stekjeId = request.params.id;
   const stekjeResponse = await fetch(`https://fdnd-agency.directus.app/items/bib_stekjes/${stekjeId}`);
   const stekjeData = await stekjeResponse.json();
+
 
   response.render('stekjes.liquid', { stekje: stekjeData.data });
 });
@@ -58,6 +60,10 @@ app.post('/', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
   response.redirect(303, '/')
+})
+
+app.use((req, res, next) => {
+  res.status(404).send("Oepsie!!")
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
