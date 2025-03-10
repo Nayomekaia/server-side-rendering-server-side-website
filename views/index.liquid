@@ -1,5 +1,13 @@
 {% render 'partials/head.liquid' %}
 {% include 'partials/nav.liquid' %}
+ 
+{% for stekje in stekjes %}
+    <p> {{ stekje.naam}} </p> 
+{% endfor %}
+
+{% for afbeelding in afbeeldingen %}
+    <img src="https://fdnd-agency.directus.app/assets/{{ afbeelding.foto }}" alt=""> 
+{% endfor %}
 
     <section class="header-title">
         <h1>Stekjes</h1>
