@@ -63,7 +63,7 @@ app.post('/', async function (request, response) {
 })
 
 app.use((req, res, next) => {
-  res.status(404).send("Oepsie!!")
+  res.status(404).render('404.liquid');
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
