@@ -1,21 +1,12 @@
 {% render 'partials/head.liquid' %}
 {% include 'partials/nav.liquid' %}
- 
-{% for stekje in stekjes %}
-    <p> {{ stekje.naam}} </p> 
-{% endfor %}
-
-{% for afbeelding in afbeeldingen %}
-    <img src="https://fdnd-agency.directus.app/assets/{{ afbeelding.foto }}" alt=""> 
-{% endfor %}
 
     <section class="header-title">
         <h1>Stekjes</h1>
     </section>
 </header>
 
-<main>
-    <article> 
+<article class="intro-stekjes">
         <p> Hou je van planten of wil je juist je groene vingers 
             ontdekken? In de Bieb in Bloei Hoek van OBA Linnaeus 
             staat een vrolijke stekjeskast, gemaakt door kinderen 
@@ -28,37 +19,42 @@
             Benieuwd hoe het werkt en wat een stekje precies is? 
             Lees verder! 
         </p>
-    </article>
-    <section class="carousel-stekjeskast">
-        <ul class="slides">
-            <li><img src="./assets/headquarters.png" alt=""></li>
-            <li><img src="./assets/headquarters.png" alt=""></li>
-            <li><img src="./assets/headquarters.png" alt=""></li>
-            <li><img src="./assets/headquarters.png" alt=""></li>
-            <li><img src="./assets/headquarters.png" alt=""></li>
-            <li><img src="./assets/headquarters.png" alt=""></li>
-        </ul>
-    </section>
+</article>
+
+<main>
     
-    <article>
-        <img src="" alt="pijltje">
+   <section class="stekjeskast">
+    {% for afbeelding in afbeeldingen %}
+        <section class="carousel">
+        <img src="https://fdnd-agency.directus.app/assets/{{ afbeelding.foto }}" alt=""> 
+        </section>
+    {% endfor %}
+    </section>
+ 
+    
+    <article class="uitleg-stekjes">
+       <section class="kopje-stekjes">
+         <img class="pijltje" src="/assets/pijltje.png" alt="pijltje" >
         <h2>Wat is een stekje?</h2>
+        </section>
+        <section class="harry-article">
         <p> Een stekje is een klein stukje van een plant dat kan uitgroeien tot een nieuwe plant.
             Dit is een makkelijke en leuke manier om planten te vermeerderen en te delen met anderen.
             Er zijn verschillende manieren om stekjes te maken:
-            - In water: Sommige planten, zoals pannenkoekplanten en monstera’s, maken wortels als je een
-             afgesneden stekje in een glas water zet. Zodra er wortels groeien, kun je het in aarde planten.
-            - In aarde: Andere planten kunnen direct in potgrond worden gezet. Dit werkt goed bij vetplanten 
-            of kruiden zoals munt.
-            - Door delen: Sommige planten, zoals graslelies, groeien vanzelf kleine plantjes die je makkelijk 
-            los kunt halen en opnieuw kunt planten.
+            <span> - In water: Sommige planten, zoals pannenkoekplanten en monstera’s, maken wortels als je een
+             afgesneden stekje in een glas water zet. Zodra er wortels groeien, kun je het in aarde planten.</span>
+             <span> - In aarde: Andere planten kunnen direct in potgrond worden gezet. Dit werkt goed bij vetplanten 
+            of kruiden zoals munt.</span>
+            <span> -  Door delen: Sommige planten, zoals graslelies, groeien vanzelf kleine plantjes die je makkelijk 
+            los kunt halen en opnieuw kunt planten.</span>
             Stekjes ruilen is niet alleen een duurzame manier om je plantenverzameling uit te breiden, maar het
             is ook een leuke manier om met andere plantenliefhebbers in contact te komen.
         </p>
-        <img src="" alt="harry">
-        <img src="" alt="harry">
+        <img class="harry" src="/assets/stekje.gif" alt="harry">
+        </section>
     </article>
 
+    <section class="filter-button">
     <select id="landherkomst">
         <option value="">LANDHERKOMST</option>
         <option value="Nederland">Nederland</option>
@@ -74,31 +70,31 @@
         <option value="">IRRITERENT VOOR HUISDIEREN</option>
         <option value="">NIET GIFTIG</option>
       </select>
+      </section>
 
+      <section class="stekje">
       {% for stekje in stekjes %}
-        <section>
-        
         <a href="/stekjes/{{stekje.id}}">
-            <h3>{{stekje.naam}}</h3></a>
-        <img src="https://fdnd-agency.directus.app/assets/{{ stekje.foto }}" alt="{{stekje.naam}}"> 
+        <img src="https://fdnd-agency.directus.app/assets/{{ stekje.foto }}" alt="">  <h3>{{stekje.naam}}</h3> </a>
     {% endfor %}
-
-    <section class="carousel-stekjes">
-        <ul class="slides">
+      </section>
            
     </section>
 
-    <section class="uitleg-stekjes">
-        <img src="" alt="harry">
-        <article>
-            <img src="" alt="pijltje">
+    <section class="diy-stekjes">
+        <img class="harry-2" src="/assets/harry-2.png" alt="harry">
+        <article class="kopje-stekje-1">
+            <section class="kopje-stekjes">
+            <img class="pijltje" src="/assets/pijltje.png" alt="pijltje">
             <h2>Hoe werkt het ? </h2>
+            </section>
             <p> Het ruilen van stekjes is heel eenvoudig:
-                1) Breng een stekje mee van thuis, in water of aarde.
-                2) Plaats het in de stekjeskast en kies een nieuw stekje uit.
-                3) Gebruik eventueel de potjes met aarde onder de kast om je stekje direct in te planten.
-                4) Neem je nieuwe stekje mee naar huis en laat het verder groeien.
+                <span>1) Breng een stekje mee van thuis, in water of aarde.</span>
+                <span>2) Plaats het in de stekjeskast en kies een nieuw stekje uit.</span>
+                <span>3) Gebruik eventueel de potjes met aarde onder de kast om je stekje direct in te planten.</span>
+                <span>4) Neem je nieuwe stekje mee naar huis en laat het verder groeien.</span>
                 Zo zorgen we samen voor meer groen in de buurt!
+            </p>
         </article>
     </section>
 </main>
